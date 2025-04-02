@@ -133,15 +133,32 @@ class CustomViewer:
         status = 0
         while self.is_running():
             mujoco.mj_forward(model, data)
-            if self.x < 0.6: 
-                self.x += 0.001
-                new_q = inverse_kinematics(self.initial_q, self.R_x, [self.x, 0.2, 0.7])
+            if status == 0:
+                if self.x < 0.5: 
+                    self.x += 0.01
+                    new_q = inverse_kinematics(self.initial_q, self.R_x, [self.x, 0.0, 0.28])
+                else:
+                    status = 1 
+            elif status == 1:
+                data.ctrl[7] = 10.0
             data.qpos[:7] = new_q
+            # 遍历所有接触点
+            for i in range(data.ncon):
+                contact = data.contact[i]
+                # 获取几何体对应的body_id
+                body1_id = model.geom_bodyid[contact.geom1]
+                body2_id = model.geom_bodyid[contact.geom2]
+                
+                # 通过mj_id2name转换body_id为名称
+                body1_name = mujoco.mj_id2name(model, mujoco.mjtObj.mjOBJ_BODY, body1_id)
+                body2_name = mujoco.mj_id2name(model, mujoco.mjtObj.mjOBJ_BODY, body2_id)
+                
+                print(f"接触点 {i}: 几何体 {contact.geom1} 名字 {body1_name} 和 {contact.geom2} 名字 {body2_name} 在位置 {contact.pos} 发生接触")
             mujoco.mj_step(model, data)
             self.sync()
 
 viewer = CustomViewer(model, data)
 viewer.cam.distance = 3
-viewer.cam.azimuth = 0
+viewer.cam.azimuth = 45
 viewer.cam.elevation = -30
 viewer.run_loop()
