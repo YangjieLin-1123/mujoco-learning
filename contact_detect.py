@@ -112,7 +112,7 @@ class CustomViewer:
             [0, np.sin(theta), np.cos(theta)]
         ])
         
-        self.x = 0.3
+        self.x = 0.5
         self.new_q = self.initial_q
 
     def is_running(self):
@@ -134,9 +134,9 @@ class CustomViewer:
         while self.is_running():
             mujoco.mj_forward(model, data)
             if status == 0:
-                if self.x < 0.5: 
-                    self.x += 0.01
-                    new_q = inverse_kinematics(self.initial_q, self.R_x, [self.x, 0.0, 0.28])
+                if self.x < 0.6: 
+                    self.x += 0.001
+                    new_q = inverse_kinematics(self.initial_q, self.R_x, [self.x, 0.0, 0.38])
                 else:
                     status = 1 
             elif status == 1:
