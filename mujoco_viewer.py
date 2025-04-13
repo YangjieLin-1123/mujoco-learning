@@ -26,7 +26,7 @@ class CustomViewer:
         return self.handle.viewport
 
     def run_loop(self):
-        self.runBefor()
+        self.runBefore()
         while self.is_running():
             mujoco.mj_forward(self.model, self.data)
             self.runFunc()
