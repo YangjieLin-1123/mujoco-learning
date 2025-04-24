@@ -24,7 +24,7 @@ class PandaEnv(gym.Env):
         self.handle.cam.azimuth = 0
         self.handle.cam.elevation = -30
 
-        # 动作空间，假设机械臂有7个关节
+        # 动作空间，7个关节
         self.action_space = spaces.Box(low=-1.0, high=1.0, shape=(7,))
         # 观测空间，包含关节位置和目标位置
         self.observation_space = spaces.Box(low=-np.inf, high=np.inf, shape=(7 + 3,))
@@ -46,6 +46,7 @@ class PandaEnv(gym.Env):
         mujoco.mj_step(self.model, self.data)
         achieved_goal = self.data.body(self.end_effector_id).xpos
         reward = -np.linalg.norm(achieved_goal - self.goal)
+        reward -= 0.3*self.data.ncon
         terminated = np.linalg.norm(achieved_goal - self.goal) < 0.01
         truncated = False
         info = {'is_success': terminated}
@@ -65,13 +66,11 @@ class PandaEnv(gym.Env):
 if __name__ == "__main__":
     env = make_vec_env(lambda: PandaEnv(), n_envs=1)
 
-    # 定义策略网络结构
     policy_kwargs = dict(
         activation_fn=nn.ReLU,
         net_arch=[dict(pi=[256, 128], vf=[256, 128])]
     )
 
-    # 初始化PPO模型，指定使用GPU
     model = PPO(
         "MlpPolicy",
         env,
@@ -85,6 +84,6 @@ if __name__ == "__main__":
         device="cuda" if torch.cuda.is_available() else "cpu"
     )
 
-    model.learn(total_timesteps=100000)
+    model.learn(total_timesteps=2048*100)
     model.save("panda_ppo_model")
     
