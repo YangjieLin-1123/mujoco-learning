@@ -1,7 +1,7 @@
 import mujoco
 from mujoco.usd import exporter
 
-m = mujoco.MjModel.from_xml_path('/home/dar/MuJoCoBin/mujoco_menagerie/franka_emika_panda/scene.xml')
+m = mujoco.MjModel.from_xml_path('./model/franka_emika_panda/scene.xml')
 d = mujoco.MjData(m)
 
 # Create the USDExporter

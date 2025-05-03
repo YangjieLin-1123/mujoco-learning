@@ -8,7 +8,7 @@ class Test(mujoco_viewer.CustomViewer):
     def __init__(self, path):
         super().__init__(path, 3, azimuth=-45, elevation=-30)
     
-    def runBefor(self):
+    def runBefore(self):
         state_space = ob.RealVectorStateSpace(self.model.nq)
         bounds = ob.RealVectorBounds(self.model.nq)
         for i in range(min(self.model.nq, self.model.jnt_range.shape[0])):
