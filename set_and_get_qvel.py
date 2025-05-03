@@ -227,10 +227,9 @@ class Test(mujoco_viewer.CustomViewer):
                 axes[j].legend()
             plt.tight_layout()
             plt.show()
-        # time.sleep(0.01)
 
 if __name__ == "__main__":
-    test = Test("./franka_emika_panda/scene.xml")
+    test = Test("./model/franka_emika_panda/scene.xml")
     test.run_loop()
 
     

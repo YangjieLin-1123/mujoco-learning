@@ -16,7 +16,7 @@ class PandaEnv(gym.Env):
     def __init__(self):
         super(PandaEnv, self).__init__()
         self.model = mujoco.MjModel.from_xml_path(
-            '/home/dar/MuJoCoBin/mujoco-learning/franka_emika_panda/scene.xml')
+            './model/franka_emika_panda/scene.xml')
         self.data = mujoco.MjData(self.model)
         self.end_effector_id = mujoco.mj_name2id(self.model, mujoco.mjtObj.mjOBJ_BODY, 'link7')
         self.handle = mujoco.viewer.launch_passive(self.model, self.data)
@@ -81,7 +81,8 @@ if __name__ == "__main__":
         n_epochs=10,
         gamma=0.99,
         learning_rate=3e-4,
-        device="cuda" if torch.cuda.is_available() else "cpu"
+        device="cuda" if torch.cuda.is_available() else "cpu",
+        tensorboard_log="./tensorboard/"
     )
 
     model.learn(total_timesteps=2048*100)
