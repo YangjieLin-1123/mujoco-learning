@@ -30,7 +30,7 @@
   <default>
     <default class="so_arm100">
       <joint frictionloss="0.1" armature="0.1"/>
-      <position kp="50" dampratio="1" forcerange="-35 35" ctrlrange="-3.14158 3.14158"/>
+      <!-- <position kp="50" dampratio="1" forcerange="-35 35" ctrlrange="-3.14158 3.14158"/> -->
       <default class="Rotation">
         <joint axis="0 1 0" range="-2.2 2.2"/>
       </default>
@@ -143,7 +143,7 @@
     <exclude body1="Base" body2="Rotation_Pitch"/>
   </contact>
 
-  <keyframe>
+  <!-- <keyframe>
     <key name="home" qpos="0 -1.57079 1.57079 1.57079 -1.57079 0" ctrl="0 -1.57079 1.57079 1.57079 -1.57079 0"/>
-  </keyframe>
+  </keyframe> -->
 </mujoco>
