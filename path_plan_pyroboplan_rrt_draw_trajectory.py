@@ -192,7 +192,7 @@ class Test(mujoco_viewer.CustomViewer):
         
 
 if __name__ == "__main__":
-    test = Test("/home/dar/MuJoCoBin/mujoco_menagerie/franka_emika_panda/scene.xml")
+    test = Test("model/franka_emika_panda/scene.xml")
     test.run_loop()
 
     

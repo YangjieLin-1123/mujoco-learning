@@ -11,7 +11,7 @@ glfw.window_hint(glfw.VISIBLE, glfw.FALSE)
 window = glfw.create_window(resolution[0], resolution[1], "Offscreen", None, None)
 glfw.make_context_current(window)
 
-model = mujoco.MjModel.from_xml_path('./franka_emika_panda/scene_withcamera.xml')
+model = mujoco.MjModel.from_xml_path('./model/franka_emika_panda/scene_withcamera.xml')
 data = mujoco.MjData(model)
 scene = mujoco.MjvScene(model, maxgeom=10000)
 context = mujoco.MjrContext(model, mujoco.mjtFontScale.mjFONTSCALE_150.value)

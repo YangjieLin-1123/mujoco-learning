@@ -13,7 +13,7 @@ class Test(mujoco_viewer.CustomViewer):
         super().__init__(path, 3, azimuth=-45, elevation=-30)
     
     def runBefor(self):
-        robot = pinocchio.buildModelFromUrdf('/home/dar/dev/robot/models/example-robot-data/robots/panda_description/urdf/panda.urdf')
+        robot = pinocchio.buildModelFromUrdf('model/panda_description/urdf/panda.urdf')
         print('robot name: ' + robot.name)
 
         # <key qpos='-1.09146e-23 0.00126288 -3.32926e-07 -0.0696243 -2.28695e-05 0.192135 0.00080101 -5.53841e-09 2.91266e-07'/>
@@ -54,5 +54,5 @@ class Test(mujoco_viewer.CustomViewer):
             self.data.qpos[:7] = self.qs_sample[-1][:7]
         time.sleep(0.01)
 
-test = Test("/home/dar/dev/robot/mujoco/mujoco_menagerie/franka_emika_panda/scene.xml")
+test = Test("model/franka_emika_panda/scene.xml")
 test.run_loop()

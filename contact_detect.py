@@ -9,7 +9,7 @@ import pinocchio
 from numpy.linalg import norm, solve
 
 def inverse_kinematics(current_q, target_dir, target_pos):
-    urdf_filename = '/home/dar/MuJoCoBin/mujoco-learning/franka_panda_description/robots/panda_arm.urdf'
+    urdf_filename = './model/franka_panda_description/robots/panda_arm.urdf'
     # 从 URDF 文件构建机器人模型
     model = pinocchio.buildModelFromUrdf(urdf_filename)
     # 为模型创建数据对象，用于存储计算过程中的中间结果
@@ -88,7 +88,7 @@ def limit_angle(angle):
         angle += 2 * np.pi
     return angle
 
-model = mujoco.MjModel.from_xml_path('/home/dar/MuJoCoBin/mujoco_menagerie/franka_emika_panda/scene.xml')
+model = mujoco.MjModel.from_xml_path('./model/franka_emika_panda/scene.xml')
 data = mujoco.MjData(model)
 
 class CustomViewer:

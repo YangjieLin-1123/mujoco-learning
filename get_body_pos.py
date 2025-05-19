@@ -20,5 +20,5 @@ class Test(mujoco_viewer.CustomViewer):
         print(f"End effector position: {end_effector_pos}")
         # time.sleep(0.01)
 
-test = Test("/home/dar/MuJoCoBin/mujoco_menagerie/franka_emika_panda/scene.xml")
+test = Test("./model/franka_emika_panda/scene.xml")
 test.run_loop()

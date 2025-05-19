@@ -4,7 +4,7 @@ from sys import argv
 import pinocchio
  
 # Load the urdf model
-model = pinocchio.buildModelFromUrdf("/home/dar/MuJoCoBin/mujoco-learning/franka_panda_description/robots/panda_arm.urdf")
+model = pinocchio.buildModelFromUrdf("model/franka_panda_description/robots/panda_arm.urdf")
 print("model name: " + model.name)
  
 # Create data required by the algorithms
