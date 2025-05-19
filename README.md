@@ -3,13 +3,9 @@
 ## related package
 
 ```
-pip3 install mujoco
-pip3 install pin
-pip3 install glfw
-pip3 instlal pyroboplan
-pip3 install stable_baselines3
-pip3 install gym
-pip3 install matplotlib
+uv venv
+source .venv/bin/activate
+uv pip install -r requirements.txt
 ```
 
 ## vedio tutorials
