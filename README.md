@@ -3,9 +3,13 @@
 ## Related package
 
 ```
+# uv 
 uv venv
 source .venv/bin/activate
 uv pip install -r requirements.txt
+
+# install PyKDL
+bash install_pykdl.sh
 ```
 
 ## Tutorials
