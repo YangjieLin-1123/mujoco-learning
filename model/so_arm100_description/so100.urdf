@@ -4,12 +4,6 @@
      For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
 <robot
   name="SO_5DOF_ARM100_8j_URDF.SLDASM">
-  <material name="white">
-    <color rgba="0.95 0.95 0.95 1" />
-  </material>
-  <material name="motor">
-    <color rgba="0.05 0.05 0.05 1" />
-  </material>
   <link
     name="Base">
     <inertial>
@@ -26,25 +20,18 @@
         iyz="2.26514711036514E-05"
         izz="0.000145097720857224" />
     </inertial>
-    <visual name="base_link_chassis">
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh filename="meshes/Base.stl" />
-      </geometry>
-      <material name="white">
-      </material>
-    </visual>
-    <visual name="base_link_motor">
+    <visual>
       <origin
         xyz="0 0 0"
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/Base_Motor.stl" />
+          filename="package://SO_5DOF_ARM100_8j_URDF.SLDASM/meshes/Base.STL" />
       </geometry>
-      <material name="motor">
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
       </material>
     </visual>
     <collision>
@@ -53,16 +40,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/Base.stl" />
-      </geometry>
-    </collision>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="meshes/Base_Motor.stl" />
+          filename="package://SO_5DOF_ARM100_8j_URDF.SLDASM/meshes/Base.STL" />
       </geometry>
     </collision>
   </link>
@@ -82,26 +60,18 @@
         iyz="-4.58026206663885E-06"
         izz="5.86058514263952E-05" />
     </inertial>
-    <visual name="rotation_pitch_chassis">
+    <visual>
       <origin
         xyz="0 0 0"
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/Rotation_Pitch.stl" />
+          filename="package://SO_5DOF_ARM100_8j_URDF.SLDASM/meshes/Rotation_Pitch.STL" />
       </geometry>
-      <material name="white">
-      </material>
-    </visual>
-    <visual name="rotation_pitch_motor">
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="meshes/Rotation_Pitch_Motor.stl" />
-      </geometry>
-      <material name="motor">
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
       </material>
     </visual>
     <collision>
@@ -110,22 +80,13 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/Rotation_Pitch.stl" />
-      </geometry>
-    </collision>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="meshes/Rotation_Pitch_Motor.stl" />
+          filename="package://SO_5DOF_ARM100_8j_URDF.SLDASM/meshes/Rotation_Pitch.STL" />
       </geometry>
     </collision>
   </link>
   <joint
     name="Rotation"
-    type="revolute">
+    type="continuous">
     <origin
       xyz="0 -0.0452 0.0165"
       rpy="1.5708 0 0" />
@@ -134,13 +95,7 @@
     <child
       link="Rotation_Pitch" />
     <axis
-      xyz="0 -1 0" />
-      <!-- note for the so100 arm there is no well defined effort/velocity limits at the moment -->
-    <limit
-      lower="-2.1"
-      upper="2.1"
-      effort="0"
-      velocity="0" />
+      xyz="0 1 0" />
   </joint>
   <link
     name="Upper_Arm">
@@ -158,26 +113,18 @@
         iyz="2.11884806298698E-06"
         izz="0.000213280241160769" />
     </inertial>
-    <visual name="upper_arm_chassis">
+    <visual>
       <origin
         xyz="0 0 0"
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/Upper_Arm.stl" />
+          filename="package://SO_5DOF_ARM100_8j_URDF.SLDASM/meshes/Upper_Arm.STL" />
       </geometry>
-      <material name="white">
-      </material>
-    </visual>
-    <visual name="upper_arm_motor">
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="meshes/Upper_Arm_Motor.stl" />
-      </geometry>
-      <material name="motor">
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
       </material>
     </visual>
     <collision>
@@ -186,36 +133,22 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/Upper_Arm.stl" />
-      </geometry>
-    </collision>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="meshes/Upper_Arm_Motor.stl" />
+          filename="package://SO_5DOF_ARM100_8j_URDF.SLDASM/meshes/Upper_Arm.STL" />
       </geometry>
     </collision>
   </link>
   <joint
     name="Pitch"
-    type="revolute">
+    type="continuous">
     <origin
       xyz="0 0.1025 0.0306"
-      rpy="1.5708 0 0" />
+      rpy="0 0 0" />
     <parent
       link="Rotation_Pitch" />
     <child
       link="Upper_Arm" />
     <axis
-      xyz="-1 0 0" />
-    <limit
-      lower="-0.1"
-      upper="3.45"
-      effort="0"
-      velocity="0" />
+      xyz="1 0 0" />
   </joint>
   <link
     name="Lower_Arm">
@@ -233,26 +166,18 @@
         iyz="1.77429964684103E-06"
         izz="5.08741652515214E-05" />
     </inertial>
-    <visual name="lower_arm_chassis">
+    <visual>
       <origin
         xyz="0 0 0"
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/Lower_Arm.stl" />
+          filename="package://SO_5DOF_ARM100_8j_URDF.SLDASM/meshes/Lower_Arm.STL" />
       </geometry>
-      <material name="white">
-      </material>
-    </visual>
-    <visual name="lower_arm_motor">
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="meshes/Lower_Arm_Motor.stl" />
-      </geometry>
-      <material name="motor">
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
       </material>
     </visual>
     <collision>
@@ -261,36 +186,22 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/Lower_Arm.stl" />
-      </geometry>
-    </collision>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="meshes/Lower_Arm_Motor.stl" />
+          filename="package://SO_5DOF_ARM100_8j_URDF.SLDASM/meshes/Lower_Arm.STL" />
       </geometry>
     </collision>
   </link>
   <joint
     name="Elbow"
-    type="revolute">
+    type="continuous">
     <origin
       xyz="0 0.11257 0.028"
-      rpy="-1.5708 0 0" />
+      rpy="0 0 0" />
     <parent
       link="Upper_Arm" />
     <child
       link="Lower_Arm" />
     <axis
       xyz="1 0 0" />
-    <limit 
-      lower="-0.2"
-      upper="3.14159"
-      effort="0"
-      velocity="0" />
   </joint>
   <link
     name="Wrist_Pitch_Roll">
@@ -308,26 +219,18 @@
         iyz="4.09549055863776E-08"
         izz="3.4540143384536E-05" />
     </inertial>
-    <visual name="wrist_pitch_roll_chassis">
+    <visual>
       <origin
         xyz="0 0 0"
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/Wrist_Pitch_Roll.stl" />
+          filename="package://SO_5DOF_ARM100_8j_URDF.SLDASM/meshes/Wrist_Pitch_Roll.STL" />
       </geometry>
-      <material name="white">
-      </material>
-    </visual>
-    <visual name="wrist_pitch_roll_motor">
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="meshes/Wrist_Pitch_Roll_Motor.stl" />
-      </geometry>
-      <material name="motor">
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
       </material>
     </visual>
     <collision>
@@ -336,36 +239,22 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/Wrist_Pitch_Roll.stl" />
-      </geometry>
-    </collision>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="meshes/Wrist_Pitch_Roll_Motor.stl" />
+          filename="package://SO_5DOF_ARM100_8j_URDF.SLDASM/meshes/Wrist_Pitch_Roll.STL" />
       </geometry>
     </collision>
   </link>
   <joint
     name="Wrist_Pitch"
-    type="revolute">
+    type="continuous">
     <origin
       xyz="0 0.0052 0.1349"
-      rpy="-1.5708 0 0" />
+      rpy="0 0 0" />
     <parent
       link="Lower_Arm" />
     <child
       link="Wrist_Pitch_Roll" />
     <axis
       xyz="1 0 0" />
-    <limit 
-      lower="-1.8"
-      upper="1.8"
-      effort="0"
-      velocity="0" />
   </joint>
   <link
     name="Fixed_Jaw">
@@ -383,26 +272,18 @@
         iyz="-1.58743247545413E-07"
         izz="5.02460913506734E-05" />
     </inertial>
-    <visual name="fixed_jaw_chassis">
+    <visual>
       <origin
         xyz="0 0 0"
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/Fixed_Jaw.stl" />
+          filename="package://SO_5DOF_ARM100_8j_URDF.SLDASM/meshes/Fixed_Jaw.STL" />
       </geometry>
-      <material name="white">
-      </material>
-    </visual>
-    <visual name="fixed_jaw_motor">
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="meshes/Fixed_Jaw_Motor.stl" />
-      </geometry>
-      <material name="motor">
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
       </material>
     </visual>
     <collision>
@@ -411,39 +292,25 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/Fixed_Jaw_part1.ply" />
-      </geometry>
-    </collision>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="meshes/Fixed_Jaw_part2.ply" />
+          filename="package://SO_5DOF_ARM100_8j_URDF.SLDASM/meshes/Fixed_Jaw.STL" />
       </geometry>
     </collision>
   </link>
   <joint
     name="Wrist_Roll"
-    type="revolute">
+    type="continuous">
     <origin
       xyz="0 -0.0601 0"
-      rpy="0 1.5708 0" />
+      rpy="0 0 0" />
     <parent
       link="Wrist_Pitch_Roll" />
     <child
       link="Fixed_Jaw" />
     <axis
-      xyz="0 -1 0" />
-    <limit 
-      lower="-3.14159"
-      upper="3.14159"
-      effort="0"
-      velocity="0" />
+      xyz="0 1 0" />
   </joint>
   <link
-    name="Moving_Jaw">
+    name="Moving Jaw">
     <inertial>
       <origin
         xyz="-0.00161744605468241 -0.0303472584046471 0.000449645961853651"
@@ -458,15 +325,18 @@
         iyz="-1.71146075110632E-07"
         izz="8.9916083370498E-06" />
     </inertial>
-    <visual name="moving_jaw_chassis">
+    <visual>
       <origin
         xyz="0 0 0"
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/Moving_Jaw.stl" />
+          filename="package://SO_5DOF_ARM100_8j_URDF.SLDASM/meshes/Moving Jaw.STL" />
       </geometry>
-      <material name="white">
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
       </material>
     </visual>
     <collision>
@@ -475,82 +345,21 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="meshes/Moving_Jaw_part1.ply" />
-      </geometry>
-    </collision>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="meshes/Moving_Jaw_part2.ply" />
-      </geometry>
-    </collision>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="meshes/Moving_Jaw_part3.ply" />
+          filename="package://SO_5DOF_ARM100_8j_URDF.SLDASM/meshes/Moving Jaw.STL" />
       </geometry>
     </collision>
   </link>
   <joint
     name="Jaw"
-    type="revolute">
+    type="continuous">
     <origin
       xyz="-0.0202 -0.0244 0"
-      rpy="3.1416 0 3.33" />
+      rpy="3.1416 0 3.1416" />
     <parent
       link="Fixed_Jaw" />
     <child
-      link="Moving_Jaw" />
+      link="Moving Jaw" />
     <axis
       xyz="0 0 1" />
-    <limit 
-      lower="0"
-      upper="1.7"
-      effort="0"
-      velocity="0" />
   </joint>
-
-  <!-- fake joints for useful data -->
-  <joint name="Fixed_Jaw_tip_joint" type="fixed">
-    <origin rpy="0 0 0" xyz="0.01 -0.097 0"/>
-    <parent link="Fixed_Jaw"/>
-    <child link="Fixed_Jaw_tip"/>
-  </joint>
-  <link name="Fixed_Jaw_tip">
-    <!-- <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <sphere radius="0.01" />
-      </geometry>
-      <material name="red">
-        <color rgba="1 0 0 0.5"/>
-      </material>
-    </visual> -->
-  </link>
-  <joint name="Moving_Jaw_tip_joint" type="fixed">
-    <origin rpy="0 0 0" xyz="-0.01 -0.073 0"/>
-    <parent link="Moving_Jaw"/>
-    <child link="Moving_Jaw_tip"/>
-  </joint>
-  <link name="Moving_Jaw_tip">
-    <!-- <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <sphere radius="0.01" />
-      </geometry>
-      <material name="red">
-        <color rgba="1 0 0 0.5"/>
-      </material>
-    </visual> -->
-  </link>
 </robot>

@@ -15,6 +15,7 @@ bash install_pykdl.sh
 ## Tutorials
 |file|url|
 |----|-------|
+|kdl_urdf_test.py|[不装 ROS 也能用 PyKDL！使用kdl_parser解析URDF并进行IK](https://www.bilibili.com/video/BV1RWMHzREg4/?vd_source=5ba34935b7845cd15c65ef62c64ba82f)|
 |get_torque.py|[MuJoCo 解析 qfrc 三种力！带你测试鼠标拖拽物理交互效果](https://www.bilibili.com/video/BV1kH79zUEAc/?vd_source=5ba34935b7845cd15c65ef62c64ba82f)|
 |joint_impedance_control.py|[MuJoCo 机械臂关节空间阻抗控制Impedance实现（附代码）](https://www.bilibili.com/video/BV1UK5czMEQr/?vd_source=5ba34935b7845cd15c65ef62c64ba82f#reply262516173552)|
 |rl_panda.py|[MuJoCo 机械臂 PPO 强化学习逆向运动学（IK）](https://www.bilibili.com/video/BV1mHLVzzEMj?vd_source=5ba34935b7845cd15c65ef62c64ba82f&spm_id_from=333.788.videopod.sections)|

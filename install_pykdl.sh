@@ -20,3 +20,11 @@ if [ ! -d "orocos_kinematics_dynamics" ]; then
 fi
 
 rm -rf orocos_kinematics_dynamics
+
+if [ ! -d "kdl_parser" ]; then
+    git clone git@github.com:jvytee/kdl_parser.git
+    cd kdl_parser
+    uv pip install .
+fi
+
+rm -rf kdl_parser
