@@ -2,3 +2,8 @@
 *.png
 *.pyc
 tensorboard
+pinocchio
+eigenpy
+casadi
+kdl_parser
+pinocchio_install
