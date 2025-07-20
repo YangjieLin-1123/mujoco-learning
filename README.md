@@ -10,6 +10,10 @@ uv pip install -r requirements.txt
 
 # install PyKDL
 bash install_pykdl.sh
+
+# install pinocchio
+bash install_pinocchio.sh
+
 ```
 
 ## Tutorials
