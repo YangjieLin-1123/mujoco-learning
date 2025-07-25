@@ -47,6 +47,8 @@ function installPinocchio(){
   # git clone https://github.com/stack-of-tasks/pinocchio.git
   git clone git@github.com:stack-of-tasks/pinocchio.git
   cd pinocchio
+  # high version cannot cmake example-robot-data
+  git reset --hard bb5658416724a36d5e8d2fb6c65614f39796f7f1
   mkdir build && cd build
   # cd build
 
@@ -60,7 +62,7 @@ function installPinocchio(){
     -Dcasadi_DIR="${VIRTUAL_ENV}/lib/cmake/casadi" \
     -DCMAKE_LIBRARY_PATH="${VIRTUAL_ENV}/lib"
 
-  make -j10
+  make -j$(nproc)
   make install
 }
 
