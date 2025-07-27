@@ -19,6 +19,7 @@ bash install_pinocchio.sh
 ## Tutorials
 |file|url|
 |----|-------|
+|control_ee_with_pinocchio_so100.py|[Pinocchio 结合 CasADi 进行 IK 逆运动学及 Mujoco 仿真](https://www.bilibili.com/video/BV1o38gzSE9h/?vd_source=5ba34935b7845cd15c65ef62c64ba82f)|
 |install_pinocchio.sh|[Pinocchio 导入 CasADi 失败？源码编译保姆级教程，一步到位解决！](https://www.bilibili.com/video/BV1mSghz1EUx/?vd_source=5ba34935b7845cd15c65ef62c64ba82f)|
 |kdl_urdf_test.py|[不装 ROS 也能用 PyKDL！使用kdl_parser解析URDF并进行IK](https://www.bilibili.com/video/BV1RWMHzREg4/?vd_source=5ba34935b7845cd15c65ef62c64ba82f)|
 |get_torque.py|[MuJoCo 解析 qfrc 三种力！带你测试鼠标拖拽物理交互效果](https://www.bilibili.com/video/BV1kH79zUEAc/?vd_source=5ba34935b7845cd15c65ef62c64ba82f)|

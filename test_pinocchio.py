@@ -1,21 +1,24 @@
 from pathlib import Path
 from sys import argv
  
-import pinocchio
+import pinocchio as pin
  
 # Load the urdf model
-model = pinocchio.buildModelFromUrdf("model/franka_panda_description/robots/panda_arm.urdf")
+model = pin.RobotWrapper.BuildFromMJCF("model/trs_so_arm100/so_arm100.xml").model
+# model = pin.buildModelFromUrdf("model/so_arm100_description/so100.urdf")
 print("model name: " + model.name)
+print("lowerLimits: " + str(model.lowerPositionLimit))
+print("upperLimits: " + str(model.upperPositionLimit))
  
 # Create data required by the algorithms
 data = model.createData()
  
 # Sample a random configuration
-q = pinocchio.randomConfiguration(model)
+q = pin.randomConfiguration(model)
 print(f"q: {q.T}")
  
 # Perform the forward kinematics over the kinematic tree
-pinocchio.forwardKinematics(model, data, q)
+pin.forwardKinematics(model, data, q)
  
 # Print out the placement of each joint of the kinematic tree
 for name, oMi in zip(model.names, data.oMi):
