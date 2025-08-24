@@ -2,7 +2,7 @@ import pinocchio as pin
 import numpy as np
 
 # 加载 URDF 文件
-urdf_path = "/home/dar/MuJoCoBin/mujoco-learning/franka_panda_description/robots/panda_arm.urdf"
+urdf_path = "model/franka_panda_description/robots/panda_arm.urdf"
 model = pin.buildModelFromUrdf(urdf_path)
 data = model.createData()
 

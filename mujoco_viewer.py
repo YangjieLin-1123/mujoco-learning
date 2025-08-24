@@ -1,3 +1,4 @@
+import time
 import mujoco
 import mujoco.viewer
 
@@ -32,6 +33,7 @@ class CustomViewer:
             self.runFunc()
             mujoco.mj_step(self.model, self.data)
             self.sync()
+            time.sleep(self.model.opt.timestep)
     
     def runBefore(self):
         pass

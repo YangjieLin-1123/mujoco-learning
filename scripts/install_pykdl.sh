@@ -16,7 +16,7 @@ if [ ! -d "orocos_kinematics_dynamics" ]; then
     cmake ..
     make -j$(nproc)
     sudo make install
-    cp PyKDL.so* ../../../.venv/lib/python3.10/site-packages/
+    cp PyKDL.so* ../../../../.venv/lib/python3.10/site-packages/
 fi
 
 rm -rf orocos_kinematics_dynamics
